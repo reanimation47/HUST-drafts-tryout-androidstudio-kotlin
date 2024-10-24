@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HUST-example-mobile-app-kotlin</string>
+    <string name="test_hello">Hello halo?</string>
 </resources>
