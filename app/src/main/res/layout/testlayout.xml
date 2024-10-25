@@ -30,12 +30,14 @@
 
         <Button
             android:text="btn1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
             android:layout_height="match_parent">
         </Button>
         <Button
             android:text="btn2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
             android:layout_height="match_parent">
         </Button>
 
