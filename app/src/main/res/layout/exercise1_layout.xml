@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_secondary"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:text="perfectsquares finder">
+    </TextView>
+
+    <EditText
+        android:id="@+id/input_n"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#400F"
+        android:textSize="50sp"
+        android:layout_margin="20dp"
+        android:hint="Enter n"
+        android:text="">
+    </EditText>
+
+
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:text="ok"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+        </Button>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_surface"
+        android:textSize="30sp"
+        android:hint="Result:"
+        android:gravity="center">
+    </TextView>
+
+</LinearLayout>
