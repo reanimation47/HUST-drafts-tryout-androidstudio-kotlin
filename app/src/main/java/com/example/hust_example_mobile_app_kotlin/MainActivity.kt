@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,13 +19,21 @@ var input_n = 0
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var editText: EditText
     lateinit var resultText: TextView
+    lateinit var option1_radiobtn: RadioButton
+    lateinit var option2_radiobtn: RadioButton
+    lateinit var option3_radiobtn: RadioButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.exercise1_layout)
+        setContentView(R.layout.options)
 
         this.editText = findViewById(R.id.input_n)
         this.resultText= findViewById(R.id.result_text)
+
+        this.option1_radiobtn = findViewById(R.id.option_1)
+        this.option2_radiobtn = findViewById(R.id.option_2)
+        this.option3_radiobtn = findViewById(R.id.option_3)
 
         findViewById<Button>(R.id.btn_ok).setOnClickListener(this)
 
@@ -35,58 +44,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     {
         val id: Int? = v?.id
         when (id) {
-            R.id.btn_ok -> this.displayList()
+            R.id.btn_ok -> this.displayResult()
         }
     }
 
-    private fun displayList()
+    private fun displayResult()
     {
-//        val output = mutableListOf<MutableList<Int>>()
-        input_n = editText.text.toString().toInt()
-        var output = listOf(0)
-        var output_str = ""
-        if (input_n > 0)
+        var op = 0
+        if (this.option1_radiobtn.isChecked)
         {
-            for (i in 1 ..input_n)
-            {
-//                println(i)
-                val square_root = sqrt(i.toDouble())
-//                println(square_root)
-                val int_square_root = square_root.toInt()
-                println(int_square_root)
-
-//                if (square_root + int_square_root.toDouble() == 2 * int_square_root.toDouble())
-//                {
-//                    output = output + int_square_root
-//                }
-                if (this.isPerfectSquare(i))
-                {
-
-                    output = output + i
-                }
-            }
-
-            for (num in output)
-            {
-                if (output_str == "")
-                {
-                    output_str = "${num}"
-                }else
-                {
-                    output_str = "${output_str} ,${num}"
-                }
-            }
+            op = 1
         }
-
-        this.resultText.text = output_str
-
+        if (this.option2_radiobtn.isChecked)
+        {
+            op = 2
+        }
+        if (this.option3_radiobtn.isChecked)
+        {
+            op = 3
+        }
+        this.resultText.text = "option picked: ${op}"
     }
 
 
-    fun isPerfectSquare(n: Int): Boolean {
-        if (n < 0) return false  //
-        val root = sqrt(n.toDouble()).toInt()
-        return root * root == n
-    }
 
 }
