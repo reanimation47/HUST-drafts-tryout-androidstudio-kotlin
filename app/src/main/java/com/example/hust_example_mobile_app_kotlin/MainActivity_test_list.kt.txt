@@ -20,21 +20,18 @@ import kotlin.math.sqrt
 var input_n = 0
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var input_text: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.exercise2_layout)
+        setContentView(R.layout.test_list)
 
+        //Fake data
+        val items = mutableListOf<String>()
 
-        input_text = findViewById<EditText>(R.id.list_input_n)
-        //
-        val items = mutableListOf<Int>()
-
-//        for (i in 1..100)
-//        {
-//            items.add("Item $i")
-//        }
+        for (i in 1..100)
+        {
+            items.add("Item $i")
+        }
 
         //adapter
 //        val adapter = ArrayAdapter<String>(
@@ -43,7 +40,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //            items
 //        )
 
-        val adapter = ArrayAdapter<Int>(
+        val adapter = ArrayAdapter<String>(
             this,
             R.layout.list_item_textview_template,
             R.id.list_item_template1,
@@ -51,24 +48,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         )
 
         //setup list view
-        val listView = findViewById<ListView>(R.id.list_view_show)
+        val listView = findViewById<ListView>(R.id.list_view)
         listView.adapter = adapter
 
         //list items listener
+        listView.setOnItemClickListener{ parent, view, position, id ->
+            val item = items[position]
+            Log.v("TAG DIFF", "item clicked: ${item}")
+        }
 
-        findViewById<Button>(R.id.btn_show).setOnClickListener{
-//            items.add(0,"new item")
-            items.clear()
-            val n = input_text.text.toString().toInt()
-
-            for (i in 1..n)
-            {
-                items.add(i)
-            }
-
+        findViewById<Button>(R.id.btn_add).setOnClickListener{
+            items.add(0,"new item")
             adapter.notifyDataSetChanged()
         }
 
+        findViewById<Button>(R.id.btn_remove).setOnClickListener{
+            items.removeAt(0)
+            adapter.notifyDataSetChanged()
+        }
+
+        findViewById<Button>(R.id.btn_update).setOnClickListener{
+            items[0] = "updated"
+            adapter.notifyDataSetChanged()
+        }
 
 
     }
