@@ -1,6 +1,7 @@
 package com.example.hust_example_mobile_app_kotlin
 
 import android.os.Bundle
+import android.provider.MediaStore.Audio.Radio
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
@@ -17,10 +18,21 @@ import org.w3c.dom.Text
 import kotlin.math.sqrt
 
 
-var input_n = 0
+enum class ShowOption
+{
+    ShowAll,
+    ShowOddNumsOnly,
+    ShowEvenNumsOnly
+}
+
+var picked_option = ShowOption.ShowAll
+
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var input_text: EditText
+    lateinit var option_show_all: RadioButton
+    lateinit var option_show_odd: RadioButton
+    lateinit var option_show_even: RadioButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,6 +40,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
         input_text = findViewById<EditText>(R.id.list_input_n)
+        option_show_all = findViewById<RadioButton>(R.id.option_show_all)
+        option_show_odd = findViewById<RadioButton>(R.id.option_show_odd)
+        option_show_even = findViewById<RadioButton>(R.id.option_show_even)
+
+
         //
         val items = mutableListOf<Int>()
 
@@ -57,13 +74,38 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //list items listener
 
         findViewById<Button>(R.id.btn_show).setOnClickListener{
-//            items.add(0,"new item")
+            //Update current option
+            if (option_show_all.isChecked)
+            {
+                picked_option = ShowOption.ShowAll
+            }
+            if (option_show_odd.isChecked)
+            {
+                picked_option = ShowOption.ShowOddNumsOnly
+            }
+            if (option_show_even.isChecked)
+            {
+                picked_option = ShowOption.ShowEvenNumsOnly
+            }
+
+
             items.clear()
             val n = input_text.text.toString().toInt()
 
             for (i in 1..n)
             {
-                items.add(i)
+                if (picked_option == ShowOption.ShowAll)
+                {
+                    items.add(i)
+                }
+                if (picked_option == ShowOption.ShowOddNumsOnly && i % 2 != 0)
+                {
+                    items.add(i)
+                }
+                if (picked_option == ShowOption.ShowEvenNumsOnly && i % 2 == 0)
+                {
+                    items.add(i)
+                }
             }
 
             adapter.notifyDataSetChanged()

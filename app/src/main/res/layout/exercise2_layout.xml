@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="input"
+        android:inputType="number"
+        android:text="0"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -23,6 +23,32 @@
         app:layout_constraintBottom_toTopOf="@+id/list_view_show"
         app:layout_constraintStart_toEndOf="@+id/list_input_n" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/list_input_n">
+
+        <RadioButton
+            android:id="@+id/option_show_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="all numbers" />
+
+        <RadioButton
+            android:id="@+id/option_show_odd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="odd numbers only" />
+
+        <RadioButton
+            android:id="@+id/option_show_even"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="even numbers only" />
+    </RadioGroup>
+
     <ListView
         android:id="@+id/list_view_show"
         android:layout_width="0dp"
@@ -30,5 +56,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_input_n" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 </androidx.constraintlayout.widget.ConstraintLayout>
