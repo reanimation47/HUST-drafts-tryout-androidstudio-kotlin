@@ -13,6 +13,12 @@
         android:theme="@style/Theme.HUSTexamplemobileappkotlin"
         tools:targetApi="31">
         <activity
+            android:name=".GridViewTest"
+            android:exported="false" />
+        <activity
+            android:name=".SimpleCalculator"
+            android:exported="false" />
+        <activity
             android:name=".TestSpinner"
             android:exported="true">
             <intent-filter>
