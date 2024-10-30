@@ -2,42 +2,32 @@ package com.example.hust_example_mobile_app_kotlin
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.GridView
+import android.widget.AutoCompleteTextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class GridViewTest : AppCompatActivity() {
+class AutoCompletionTest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_grid_view_test)
+        setContentView(R.layout.activity_auto_completion_test)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val items = mutableListOf<String>()
 
-        for (i in 1..10)
-        {
-            items.add("item $i")
-        }
+        val items = arrayOf("words", "anything", "bystander", "center")
 
-//        val adaper = ArrayAdapter<String>(
-//            this,
-//            android.R.layout.simple_spinner_item,
-//            items
-//        )
-        val adaper = ArrayAdapter<String>(
+        val adapter = ArrayAdapter<String> (
             this,
-            R.layout.list_item_textview_template,
-            R.id.list_item_template1,
+            android.R.layout.simple_list_item_1,
             items
         )
 
-        val gridView = findViewById<GridView>(R.id.test_grid_view)
-        gridView.adapter = adaper
+        val autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.input_autocomplete)
+        autoCompleteTextView.setAdapter(adapter)
     }
 }
