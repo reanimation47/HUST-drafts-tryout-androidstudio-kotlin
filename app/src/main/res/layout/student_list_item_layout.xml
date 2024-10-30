@@ -30,4 +30,13 @@
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/student_list_item_image"
         app:layout_constraintTop_toBottomOf="@+id/item_student_name" />
+
+    <CheckBox
+        android:id="@+id/student_item_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toBottomOf="@+id/item_student_code"
+        app:layout_constraintStart_toEndOf="@+id/item_student_code" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.graphics.drawable.toDrawable
@@ -55,6 +56,11 @@ class StudentAdapter(val students: List<StudentModel>): BaseAdapter() {
         viewHolder.imageAva.setImageDrawable(R.drawable.default_ava.toDrawable())
         viewHolder.txt_name.text = student.name
         viewHolder.txt_code.text = student.code
+        viewHolder.check_selected.isChecked= student.selected
+
+        viewHolder.check_selected.setOnClickListener{
+            student.selected = viewHolder.check_selected.isChecked
+        }
 
         return  itemView
     }
@@ -64,11 +70,13 @@ class StudentAdapter(val students: List<StudentModel>): BaseAdapter() {
         val imageAva : ImageView
         val txt_name: TextView
         val txt_code: TextView
+        val check_selected: CheckBox
 
         init {
             imageAva = itemView.findViewById(R.id.student_list_item_image)
             txt_name = itemView.findViewById(R.id.item_student_name)
             txt_code = itemView.findViewById(R.id.item_student_code)
+            check_selected = itemView.findViewById(R.id.student_item_checkbox)
         }
     }
 }
