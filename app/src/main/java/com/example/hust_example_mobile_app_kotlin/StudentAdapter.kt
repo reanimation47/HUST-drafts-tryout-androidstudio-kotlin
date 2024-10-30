@@ -25,6 +25,7 @@ class StudentAdapter(val students: List<StudentModel>): BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val itemView: View
+        val viewHolder: ViewHolder
         if(convertView == null)
         {
             Log.v("TAG DIFF", "new view created: $position")
@@ -33,23 +34,41 @@ class StudentAdapter(val students: List<StudentModel>): BaseAdapter() {
                 parent,
                 false
             )
+
+            viewHolder = ViewHolder(itemView)
+            itemView.tag = viewHolder
         }else
         {
             itemView = convertView
+            viewHolder = itemView.tag as ViewHolder
         }
 
 
 
-        val imageAva = itemView.findViewById<ImageView>(R.id.student_list_item_image)
-        val txt_name = itemView.findViewById<TextView>(R.id.item_student_name)
-        val txt_code = itemView.findViewById<TextView>(R.id.item_student_code)
+//        val imageAva = itemView.findViewById<ImageView>(R.id.student_list_item_image)
+//        val txt_name = itemView.findViewById<TextView>(R.id.item_student_name)
+//        val txt_code = itemView.findViewById<TextView>(R.id.item_student_code)
+
 
         val student = students[position]
         //imageAva.setImageResource(student.ava_id) // we dont have the images list
-        imageAva.setImageDrawable(R.drawable.default_ava.toDrawable())
-        txt_name.text = student.name
-        txt_code.text = student.code
+        viewHolder.imageAva.setImageDrawable(R.drawable.default_ava.toDrawable())
+        viewHolder.txt_name.text = student.name
+        viewHolder.txt_code.text = student.code
 
         return  itemView
+    }
+
+    class ViewHolder(itemView: View)
+    {
+        val imageAva : ImageView
+        val txt_name: TextView
+        val txt_code: TextView
+
+        init {
+            imageAva = itemView.findViewById(R.id.student_list_item_image)
+            txt_name = itemView.findViewById(R.id.item_student_name)
+            txt_code = itemView.findViewById(R.id.item_student_code)
+        }
     }
 }
