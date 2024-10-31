@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/gamil_text_init"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/gmail_ovan_bg"
+        android:gravity="center"
+        android:textColor="#FFF"
+        android:text="T"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gamil_text_sender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Sender"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/gamil_text_init"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gamil_text_subject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:text="subject"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@+id/gamil_text_star"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gamil_text_sender"
+        app:layout_constraintTop_toBottomOf="@+id/gamil_text_sender" />
+
+    <TextView
+        android:id="@+id/gamil_text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:ellipsize="end"
+        android:text="Content"
+        app:layout_constraintStart_toStartOf="@+id/gamil_text_subject"
+        app:layout_constraintTop_toBottomOf="@+id/gamil_text_subject"
+        />
+
+    <TextView
+        android:id="@+id/gamil_text_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/gamil_text_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gamil_text_time"
+        app:srcCompat="@drawable/baseline_star_border_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>
